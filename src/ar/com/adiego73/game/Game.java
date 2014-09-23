@@ -89,10 +89,12 @@ public class Game extends ActionBarActivity {
 					"Felicitaciones! Ganaste en " + game.getIntentos()
 							+ " intentos.");
 			game.build();
+			plantillaResultados.setText("");
 		}
 	}
 
 	public void click_reiniciar(View v) {
+		this.showMessage("Perdiste", "En "+game.getIntentos()+" intentos no adivinaste el numero: "+game.getNumeroAdivinar());
 		game.build();
 		plantillaResultados.setText("");
 	}

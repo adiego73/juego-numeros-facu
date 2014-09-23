@@ -19,6 +19,10 @@ public class AdivinarNumeroGame {
 		intentos = 0;
 		gano = Boolean.FALSE;
 		NumbersUtils.setRandomNumber(numeroAdivinar);
+		numeroAdivinar[0] = 9;
+		numeroAdivinar[1] = 8;
+		numeroAdivinar[2] = 1;
+		numeroAdivinar[3] = 0;
 	}
 
 	public String probarNumeros(List<Integer> numeros) {
@@ -48,5 +52,13 @@ public class AdivinarNumeroGame {
 
 	public Boolean getGano() {
 		return gano;
+	}
+	
+	public Integer getNumeroAdivinar(){
+		String numero = "";
+		for(int i = 0; i < numeroAdivinar.length; i++){
+			numero += numeroAdivinar[i];
+		}
+		return Integer.valueOf(numero);
 	}
 }
