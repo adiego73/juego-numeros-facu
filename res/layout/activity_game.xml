@@ -9,8 +9,92 @@
     tools:context="ar.com.adiego73.game.Game" >
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="26dp"
+        android:text="@string/ingrese_numero"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/btnProbar"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/numbersContainer"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="21dp"
+        android:text="@string/probar_boton" 
+        android:onClick="click_probarSuerte"/>
+
+    <Button
+        android:id="@+id/btnReiniciar"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnProbar"
+        android:layout_alignBottom="@+id/btnProbar"
+        android:layout_alignRight="@+id/numbersContainer"
+        android:text="@string/reiniciar_boton" 
+        android:onClick="click_reiniciar"/>
+
+    <LinearLayout
+        android:id="@+id/numbersContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:gravity="bottom" >
+
+        <EditText
+            android:id="@+id/primerNumero"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/segundoNumero"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="1"
+            android:width="20dp" />
+
+        <EditText
+            android:id="@+id/tercerNumero"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="1" />
+
+        <EditText
+            android:id="@+id/cuartoNumero"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number"
+            android:maxLength="1" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/plantillaResultados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnProbar"
+        android:layout_alignLeft="@+id/numbersContainer"
+        android:layout_alignRight="@+id/btnReiniciar"
+        android:layout_below="@+id/numbersContainer"
+        android:text="" />
 
 </RelativeLayout>
