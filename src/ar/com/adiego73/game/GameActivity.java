@@ -117,7 +117,7 @@ public class GameActivity extends ActionBarActivity {
 				"En " + game.getIntentos()
 						+ " intentos no adivinaste el numero: "
 						+ game.getNumeroAdivinar());
-		this.saveScore(game.getIntentos());
+		// this.saveScore(game.getIntentos());
 		game.build();
 		this.resetNumbers();
 		numbers.get(0).requestFocus();

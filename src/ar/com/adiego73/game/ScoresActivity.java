@@ -40,6 +40,7 @@ public class ScoresActivity extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
 		if (id == R.id.action_back) {
+			onBackPressed();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
