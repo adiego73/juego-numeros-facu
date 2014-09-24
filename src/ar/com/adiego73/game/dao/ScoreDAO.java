@@ -14,36 +14,46 @@ import ar.com.adiego73.game.sql.ScoreDBHelper;
 
 public final class ScoreDAO {
 
-	private ScoreDBHelper dbHelper; 
-	private SQLiteDatabase db;
-	
+	private ScoreDBHelper dbHelper;
+	private static SQLiteDatabase db = null;
+
 	public ScoreDAO(Context c) {
 		dbHelper = new ScoreDBHelper(c);
-		db = dbHelper.getWritableDatabase();
 	}
-	
-	public Long saveScore(Score score){
+
+	public Long saveScore(Score score) {
+		ScoreDAO.db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
-		
-		values.put(ScoreContract.ScoreEntry.COLUMN_DATE, System.currentTimeMillis());
+
+		values.put(ScoreContract.ScoreEntry.COLUMN_DATE,
+				System.currentTimeMillis());
 		values.put(ScoreContract.ScoreEntry.COLUMN_SCORE, score.getScore());
-		
-		return db.insert(ScoreContract.ScoreEntry.TABLE_NAME, null, values);
+
+		Long id = db.insert(ScoreContract.ScoreEntry.TABLE_NAME, null, values);
+		db.close();
+		return id;
 	}
-	
-	public List<Score> getScores(){
+
+	public List<Score> getScores() {
 		List<Score> scores = new ArrayList<Score>();
-		
-		String[] columns = {ScoreContract.ScoreEntry.COLUMN_DATE, ScoreContract.ScoreEntry.COLUMN_SCORE};
-		String orderBy = ScoreContract.ScoreEntry._ID + " ASC"; 
-		
-		Cursor cursor = db.query(ScoreContract.ScoreEntry.TABLE_NAME, columns, null, null, null, null, orderBy);
+
+		ScoreDAO.db = dbHelper.getReadableDatabase();
+		String[] columns = { ScoreContract.ScoreEntry.COLUMN_DATE,
+				ScoreContract.ScoreEntry.COLUMN_SCORE };
+		String orderBy = ScoreContract.ScoreEntry._ID + " ASC";
+
+		Cursor cursor = db.query(ScoreContract.ScoreEntry.TABLE_NAME, columns,
+				null, null, null, null, orderBy);
+		db.close();
 
 		cursor.moveToFirst();
-		while(cursor.moveToNext()){
+		while (cursor.moveToNext()) {
 			Score s = new Score();
-			s.setDate(new Date(cursor.getLong(cursor.getColumnIndexOrThrow(ScoreContract.ScoreEntry.COLUMN_DATE))));
-			s.setScore(cursor.getInt(cursor.getColumnIndexOrThrow(ScoreContract.ScoreEntry.COLUMN_SCORE)));
+			s.setDate(new Date(
+					cursor.getLong(cursor
+							.getColumnIndexOrThrow(ScoreContract.ScoreEntry.COLUMN_DATE))));
+			s.setScore(cursor.getInt(cursor
+					.getColumnIndexOrThrow(ScoreContract.ScoreEntry.COLUMN_SCORE)));
 			scores.add(s);
 		}
 		return scores;
