@@ -15,14 +15,14 @@ import ar.com.adiego73.game.sql.ScoreDBHelper;
 public final class ScoreDAO {
 
 	private ScoreDBHelper dbHelper;
-	private static SQLiteDatabase db = null;
+	private static SQLiteDatabase db;
 
 	public ScoreDAO(Context c) {
 		dbHelper = new ScoreDBHelper(c);
 	}
 
 	public Long saveScore(Score score) {
-		ScoreDAO.db = dbHelper.getWritableDatabase();
+		db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
 
 		values.put(ScoreContract.ScoreEntry.COLUMN_DATE,
@@ -30,25 +30,26 @@ public final class ScoreDAO {
 		values.put(ScoreContract.ScoreEntry.COLUMN_SCORE, score.getScore());
 
 		Long id = db.insert(ScoreContract.ScoreEntry.TABLE_NAME, null, values);
-		db.close();
 		return id;
 	}
 
 	public List<Score> getScores() {
 		List<Score> scores = new ArrayList<Score>();
 
-		ScoreDAO.db = dbHelper.getReadableDatabase();
-		String[] columns = { ScoreContract.ScoreEntry.COLUMN_DATE,
+		db = dbHelper.getReadableDatabase();
+		String[] columns = { ScoreContract.ScoreEntry._ID,
+				ScoreContract.ScoreEntry.COLUMN_DATE,
 				ScoreContract.ScoreEntry.COLUMN_SCORE };
 		String orderBy = ScoreContract.ScoreEntry._ID + " ASC";
 
 		Cursor cursor = db.query(ScoreContract.ScoreEntry.TABLE_NAME, columns,
 				null, null, null, null, orderBy);
-		db.close();
 
 		cursor.moveToFirst();
 		while (cursor.moveToNext()) {
 			Score s = new Score();
+			s.setId(cursor.getInt(cursor
+					.getColumnIndexOrThrow(ScoreContract.ScoreEntry._ID)));
 			s.setDate(new Date(
 					cursor.getLong(cursor
 							.getColumnIndexOrThrow(ScoreContract.ScoreEntry.COLUMN_DATE))));
@@ -57,5 +58,11 @@ public final class ScoreDAO {
 			scores.add(s);
 		}
 		return scores;
+	}
+
+	public static void destroy() {
+		if (db.isOpen()) {
+			db.close();
+		}
 	}
 }

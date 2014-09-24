@@ -1,9 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" 
       xmlns:app="http://schemas.android.com/apk/res-auto">
       
-    <item android:id="@+id/action_scores"
+    <item
+        android:id="@+id/action_scores"
         android:icon="@drawable/ic_action_important"
-          android:title="@string/menu_scores"
-          app:showAsAction="always" />
+        android:title="@string/menu_scores"
+        app:showAsAction="always"/>
     
 </menu>

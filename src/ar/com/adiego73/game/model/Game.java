@@ -1,10 +1,13 @@
 package ar.com.adiego73.game.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import ar.com.adiego73.game.utils.NumbersUtils;
 
-public class Game {
+public class Game implements Serializable {
+
+	private static final long serialVersionUID = -2125128642666543600L;
 
 	private Integer numeroAdivinar[] = new Integer[4];
 	private Integer intentos;

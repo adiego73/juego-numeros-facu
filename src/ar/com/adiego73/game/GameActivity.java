@@ -6,15 +6,19 @@ import java.util.Iterator;
 import java.util.List;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import ar.com.adiego73.game.dao.ScoreDAO;
 import ar.com.adiego73.game.model.Game;
 import ar.com.adiego73.game.model.Score;
 import ar.com.adiego73.game.sql.task.SaveTask;
@@ -48,7 +52,11 @@ public class GameActivity extends ActionBarActivity {
 		while (it.hasNext()) {
 			EditText et = it.next();
 			EditText next = it.hasNext() ? numbers.get(num) : null;
-			et.addTextChangedListener(EventFactory.createTextWatcher(et, next));
+			et.addTextChangedListener(EventFactory
+					.createTextWatcher(
+							et,
+							next,
+							(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)));
 			num++;
 		}
 	}
@@ -65,11 +73,18 @@ public class GameActivity extends ActionBarActivity {
 
 		switch (id) {
 		case R.id.action_scores:
+			goToScoresActivity();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		ScoreDAO.destroy();
 	}
 
 	public void click_probarSuerte(View v) {
@@ -119,6 +134,11 @@ public class GameActivity extends ActionBarActivity {
 
 		SaveTask task = new SaveTask(getBaseContext());
 		task.execute(scores);
+	}
+
+	private void goToScoresActivity() {
+		Intent intent = new Intent(this, ScoresActivity.class);
+		startActivity(intent);
 	}
 
 	private void showMessage(String title, String message) {

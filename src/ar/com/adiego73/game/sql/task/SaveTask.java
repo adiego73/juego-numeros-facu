@@ -20,5 +20,4 @@ public class SaveTask extends AsyncTask<Score, Void, Void> {
 		}
 		return null;
 	}
-
 }

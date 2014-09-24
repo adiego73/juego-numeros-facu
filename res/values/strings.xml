@@ -7,6 +7,7 @@
     <string name="probar_boton">Voy a tener suerte!</string>
     <string name="reiniciar_boton">Reiniciar</string>
     <string name="menu_scores">Puntajes</string>
-    
+    <string name="title_activity_scores">Puntajes</string>
+    <string name="action_back">Volver</string>
 
 </resources>
