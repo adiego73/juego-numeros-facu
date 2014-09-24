@@ -48,12 +48,13 @@ public class Game {
 	public Boolean getGano() {
 		return gano;
 	}
-	
-	public Integer getNumeroAdivinar(){
+
+	public Integer getNumeroAdivinar() {
 		String numero = "";
-		for(int i = 0; i < numeroAdivinar.length; i++){
+		for (int i = 0; i < numeroAdivinar.length; i++) {
 			numero += numeroAdivinar[i];
 		}
 		return Integer.valueOf(numero);
 	}
+
 }

@@ -1,23 +1,24 @@
 package ar.com.adiego73.game;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-import android.support.v7.app.ActionBarActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import ar.com.adiego73.game.model.Game;
+import ar.com.adiego73.game.model.Score;
+import ar.com.adiego73.game.sql.task.SaveTask;
 import ar.com.adiego73.game.utils.EventFactory;
-
-// TODO: revisar esto: http://developer.android.com/training/basics/data-storage/databases.html
 
 public class GameActivity extends ActionBarActivity {
 
@@ -77,13 +78,14 @@ public class GameActivity extends ActionBarActivity {
 		}
 
 		String result = game.probarNumeros(numeros);
-		plantillaResultados.append(result + " intentos: "
-				+ game.getIntentos() + "\n");
+		plantillaResultados.append(result + " intentos: " + game.getIntentos()
+				+ "\n");
 		this.resetNumbers();
 		if (this.game.getGano()) {
 			this.showMessage("Ganaste!",
 					"Felicitaciones! Ganaste en " + game.getIntentos()
 							+ " intentos.");
+			this.saveScore(game.getIntentos());
 			game.build();
 			plantillaResultados.setText("");
 		}
@@ -91,16 +93,33 @@ public class GameActivity extends ActionBarActivity {
 	}
 
 	public void click_reiniciar(View v) {
-		this.showMessage("Perdiste", "En "+game.getIntentos()+" intentos no adivinaste el numero: "+game.getNumeroAdivinar());
+		this.showMessage(
+				"Perdiste",
+				"En " + game.getIntentos()
+						+ " intentos no adivinaste el numero: "
+						+ game.getNumeroAdivinar());
+		this.saveScore(game.getIntentos());
 		game.build();
 		this.resetNumbers();
 		numbers.get(0).requestFocus();
 		plantillaResultados.setText("");
 	}
 
+	private void saveScore(Integer intentos) {
+		Score s = new Score();
+		s.setDate(new Date(System.currentTimeMillis()));
+		s.setScore(intentos);
+
+		Score[] scores = new Score[1];
+		scores[0] = s;
+
+		SaveTask task = new SaveTask(getBaseContext());
+		task.execute(scores);
+	}
+
 	private void showMessage(String title, String message) {
-		new AlertDialog.Builder(GameActivity.this).setTitle(title).setMessage(message)
-				.setCancelable(true)
+		new AlertDialog.Builder(GameActivity.this).setTitle(title)
+				.setMessage(message).setCancelable(true)
 				.setPositiveButton("Ok", new OnClickListener() {
 
 					@Override
