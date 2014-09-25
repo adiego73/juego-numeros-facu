@@ -193,10 +193,10 @@ public class GameActivity extends ActionBarActivity {
 	}
 
 	private void emptyListView() {
-		// TODO revisar esto porque no funciona.
 		attempts = new ArrayList<Attempt>();
-		game.setAttempts(attempts);
-		attemptsAdapter.notifyDataSetChanged();
+		attemptsAdapter = new ArrayAdapter<Attempt>(getBaseContext(),
+				android.R.layout.simple_list_item_1, attempts);
+		listAttempts.setAdapter(attemptsAdapter);
 	}
 
 	private Integer getIntFromNumbers(List<Integer> numbers) {
