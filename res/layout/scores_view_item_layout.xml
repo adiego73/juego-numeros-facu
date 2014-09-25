@@ -8,19 +8,14 @@
     
     <TableRow>
         <TextView
-            android:id="@+id/txtAttemptId"
+            android:id="@+id/txtScoreDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
+              
         <TextView
-            android:id="@+id/txtAttemptHelp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-        
-        <TextView
-            android:id="@+id/txtAttemptNumber"
+            android:id="@+id/txtScoreTotalAttempts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium" />

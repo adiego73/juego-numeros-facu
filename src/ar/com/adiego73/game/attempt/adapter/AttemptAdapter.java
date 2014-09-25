@@ -50,12 +50,12 @@ public class AttemptAdapter extends ArrayAdapter<Attempt> {
 
 		if (!attempts.isEmpty()) {
 			Attempt att = attempts.get(position);
-			viewHolder.id.append(att.getId().toString());
-			viewHolder.help.append(att.getHelp());
-			viewHolder.number.append(att.getNumber().toString());
+			viewHolder.id.setText(att.getId().toString());
+			viewHolder.help.setText(att.getHelp());
+			viewHolder.number.setText(att.getNumber().toString());
 		}
 
-		return null;
+		return vi;
 	}
 
 	private static class ViewHolder {

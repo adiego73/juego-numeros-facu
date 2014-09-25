@@ -7,21 +7,25 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import ar.com.adiego73.game.attempt.adapter.ScoreAdapter;
 import ar.com.adiego73.game.model.Score;
 import ar.com.adiego73.game.sql.task.GetTask;
 
 public class ScoresActivity extends ActionBarActivity {
 
 	private ListView listScores;
+	private ScoreAdapter scoreAdapter;
+	private List<Score> scores;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scores);
 		listScores = (ListView) findViewById(R.id.listScores);
+		this.scoreAdapter = new ScoreAdapter(getBaseContext(), scores);
+		listScores.setAdapter(scoreAdapter);
 	}
 
 	@Override
@@ -50,11 +54,8 @@ public class ScoresActivity extends ActionBarActivity {
 	private void fillListView() {
 		GetTask task = new GetTask(getBaseContext());
 		try {
-			List<Score> scores = task.execute(new Void[1]).get();
-			ArrayAdapter<Score> adapter = new ArrayAdapter<Score>(
-					getBaseContext(), android.R.layout.simple_list_item_1,
-					scores);
-			listScores.setAdapter(adapter);
+			scores = task.execute(new Void[1]).get();
+			this.scoreAdapter.notifyDataSetChanged();
 		} catch (InterruptedException e) {
 			Toast.makeText(getApplicationContext(), e.getMessage(),
 					Toast.LENGTH_LONG).show();

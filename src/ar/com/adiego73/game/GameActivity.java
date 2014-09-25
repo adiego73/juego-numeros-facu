@@ -16,10 +16,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import ar.com.adiego73.game.attempt.adapter.AttemptAdapter;
 import ar.com.adiego73.game.dao.ScoreDAO;
 import ar.com.adiego73.game.model.Attempt;
 import ar.com.adiego73.game.model.Game;
@@ -32,7 +32,7 @@ public class GameActivity extends ActionBarActivity {
 	private List<EditText> numbers;
 	private ListView listAttempts;
 	private TextView txtDebug;
-	private ArrayAdapter<Attempt> attemptsAdapter;
+	private AttemptAdapter attemptsAdapter;
 	private List<Attempt> attempts;
 	private Game game = new Game();
 
@@ -49,13 +49,14 @@ public class GameActivity extends ActionBarActivity {
 		this.numbers.add((EditText) findViewById(R.id.cuartoNumero));
 		this.txtDebug = (TextView) findViewById(R.id.txtDebug);
 		this.listAttempts = (ListView) findViewById(R.id.listAttempts);
+
+		this.attemptsAdapter = new AttemptAdapter(getBaseContext(), attempts);
+		listAttempts.setAdapter(attemptsAdapter);
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
-		txtDebug.append(game.getNumeroAdivinar().toString());
-
 		Iterator<EditText> it = numbers.iterator();
 		Integer num = 1;
 		while (it.hasNext()) {
@@ -68,10 +69,6 @@ public class GameActivity extends ActionBarActivity {
 							(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)));
 			num++;
 		}
-
-		attemptsAdapter = new ArrayAdapter<Attempt>(getBaseContext(),
-				android.R.layout.simple_list_item_1, attempts);
-		listAttempts.setAdapter(attemptsAdapter);
 	}
 
 	@Override
@@ -148,11 +145,8 @@ public class GameActivity extends ActionBarActivity {
 		s.setDate(new Date(System.currentTimeMillis()));
 		s.setScore(intentos);
 
-		Score[] scores = new Score[1];
-		scores[0] = s;
-
 		SaveTask task = new SaveTask(getBaseContext());
-		task.execute(scores);
+		task.execute(s);
 	}
 
 	private void goToScoresActivity() {
@@ -194,8 +188,7 @@ public class GameActivity extends ActionBarActivity {
 
 	private void emptyListView() {
 		attempts = new ArrayList<Attempt>();
-		attemptsAdapter = new ArrayAdapter<Attempt>(getBaseContext(),
-				android.R.layout.simple_list_item_1, attempts);
+		attemptsAdapter = new AttemptAdapter(getBaseContext(), attempts);
 		listAttempts.setAdapter(attemptsAdapter);
 	}
 
