@@ -1,6 +1,7 @@
 package ar.com.adiego73.game.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import ar.com.adiego73.game.utils.NumbersUtils;
@@ -12,6 +13,7 @@ public class Game implements Serializable {
 	private Integer numeroAdivinar[] = new Integer[4];
 	private Integer intentos;
 	private Boolean gano;
+	private List<Attempt> attempts;
 
 	public Game() {
 		this.build();
@@ -21,6 +23,7 @@ public class Game implements Serializable {
 		intentos = 0;
 		gano = Boolean.FALSE;
 		NumbersUtils.setRandomNumber(numeroAdivinar);
+		attempts = new ArrayList<Attempt>();
 	}
 
 	public String probarNumeros(List<Integer> numeros) {
@@ -58,6 +61,18 @@ public class Game implements Serializable {
 			numero += numeroAdivinar[i];
 		}
 		return Integer.valueOf(numero);
+	}
+
+	public List<Attempt> getAttempts() {
+		return attempts;
+	}
+
+	public void setAttempts(List<Attempt> attempts) {
+		this.attempts = attempts;
+	}
+
+	public void addAttempt(Attempt att) {
+		this.getAttempts().add(att);
 	}
 
 }

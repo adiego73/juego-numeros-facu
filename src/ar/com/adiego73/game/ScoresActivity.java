@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 import ar.com.adiego73.game.model.Score;
 import ar.com.adiego73.game.sql.task.GetTask;
 
@@ -55,9 +56,11 @@ public class ScoresActivity extends ActionBarActivity {
 					scores);
 			listScores.setAdapter(adapter);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			Toast.makeText(getApplicationContext(), e.getMessage(),
+					Toast.LENGTH_LONG).show();
 		} catch (ExecutionException e) {
-			e.printStackTrace();
+			Toast.makeText(getApplicationContext(), e.getMessage(),
+					Toast.LENGTH_LONG).show();
 		}
 	}
 }

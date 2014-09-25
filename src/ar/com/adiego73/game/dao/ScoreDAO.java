@@ -46,7 +46,7 @@ public final class ScoreDAO {
 				null, null, null, null, orderBy);
 
 		cursor.moveToFirst();
-		while (cursor.moveToNext()) {
+		while (cursor.isAfterLast() == false) {
 			Score s = new Score();
 			s.setId(cursor.getInt(cursor
 					.getColumnIndexOrThrow(ScoreContract.ScoreEntry._ID)));
@@ -56,7 +56,9 @@ public final class ScoreDAO {
 			s.setScore(cursor.getInt(cursor
 					.getColumnIndexOrThrow(ScoreContract.ScoreEntry.COLUMN_SCORE)));
 			scores.add(s);
+			cursor.moveToNext();
 		}
+		cursor.close();
 		return scores;
 	}
 

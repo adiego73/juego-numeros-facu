@@ -16,9 +16,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import ar.com.adiego73.game.dao.ScoreDAO;
+import ar.com.adiego73.game.model.Attempt;
 import ar.com.adiego73.game.model.Game;
 import ar.com.adiego73.game.model.Score;
 import ar.com.adiego73.game.sql.task.SaveTask;
@@ -27,25 +30,31 @@ import ar.com.adiego73.game.utils.EventFactory;
 public class GameActivity extends ActionBarActivity {
 
 	private List<EditText> numbers;
-	private TextView plantillaResultados;
+	private ListView listAttempts;
+	private TextView txtDebug;
+	private ArrayAdapter<Attempt> attemptsAdapter;
+	private List<Attempt> attempts;
 	private Game game = new Game();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
-		this.plantillaResultados = (TextView) findViewById(R.id.plantillaResultados);
+
+		this.attempts = new ArrayList<Attempt>();
+		this.numbers = new ArrayList<EditText>();
+		this.numbers.add((EditText) findViewById(R.id.primerNumero));
+		this.numbers.add((EditText) findViewById(R.id.segundoNumero));
+		this.numbers.add((EditText) findViewById(R.id.tercerNumero));
+		this.numbers.add((EditText) findViewById(R.id.cuartoNumero));
+		this.txtDebug = (TextView) findViewById(R.id.txtDebug);
+		this.listAttempts = (ListView) findViewById(R.id.listAttempts);
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
-
-		numbers = new ArrayList<EditText>();
-		numbers.add((EditText) findViewById(R.id.primerNumero));
-		numbers.add((EditText) findViewById(R.id.segundoNumero));
-		numbers.add((EditText) findViewById(R.id.tercerNumero));
-		numbers.add((EditText) findViewById(R.id.cuartoNumero));
+		txtDebug.append(game.getNumeroAdivinar().toString());
 
 		Iterator<EditText> it = numbers.iterator();
 		Integer num = 1;
@@ -59,6 +68,10 @@ public class GameActivity extends ActionBarActivity {
 							(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)));
 			num++;
 		}
+
+		attemptsAdapter = new ArrayAdapter<Attempt>(getBaseContext(),
+				android.R.layout.simple_list_item_1, attempts);
+		listAttempts.setAdapter(attemptsAdapter);
 	}
 
 	@Override
@@ -97,16 +110,23 @@ public class GameActivity extends ActionBarActivity {
 		}
 
 		String result = game.probarNumeros(numeros);
-		plantillaResultados.append(result + " intentos: " + game.getIntentos()
-				+ "\n");
+
+		Attempt attempt = new Attempt();
+		attempt.setHelp(result);
+		attempt.setId(game.getIntentos());
+		attempt.setNumber(getIntFromNumbers(numeros));
+
+		addToListView(attempt);
+
 		this.resetNumbers();
+
 		if (this.game.getGano()) {
 			this.showMessage("Ganaste!",
 					"Felicitaciones! Ganaste en " + game.getIntentos()
 							+ " intentos.");
 			this.saveScore(game.getIntentos());
 			game.build();
-			plantillaResultados.setText("");
+			emptyListView();
 		}
 		numbers.get(0).requestFocus();
 	}
@@ -117,11 +137,10 @@ public class GameActivity extends ActionBarActivity {
 				"En " + game.getIntentos()
 						+ " intentos no adivinaste el numero: "
 						+ game.getNumeroAdivinar());
-		// this.saveScore(game.getIntentos());
 		game.build();
 		this.resetNumbers();
 		numbers.get(0).requestFocus();
-		plantillaResultados.setText("");
+		emptyListView();
 	}
 
 	private void saveScore(Integer intentos) {
@@ -164,6 +183,28 @@ public class GameActivity extends ActionBarActivity {
 			result.add(Integer.valueOf(et.getText().toString()));
 		}
 
+		return result;
+	}
+
+	private void addToListView(Attempt attempt) {
+		game.addAttempt(attempt);
+		attempts.add(attempt);
+		attemptsAdapter.notifyDataSetChanged();
+	}
+
+	private void emptyListView() {
+		// TODO revisar esto porque no funciona.
+		attempts = new ArrayList<Attempt>();
+		game.setAttempts(attempts);
+		attemptsAdapter.notifyDataSetChanged();
+	}
+
+	private Integer getIntFromNumbers(List<Integer> numbers) {
+		Integer result = 0;
+		result += numbers.get(0) * 1000;
+		result += numbers.get(1) * 100;
+		result += numbers.get(2) * 10;
+		result += numbers.get(3);
 		return result;
 	}
 

@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="8"
         android:targetSdkVersion="21" />
 
     <application
@@ -27,9 +27,6 @@
             android:name=".ScoresActivity"
             android:label="@string/title_activity_scores"
             android:screenOrientation="portrait" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="ar.com.adiego73.game.GameActivity" />
         </activity>
     </application>
 
