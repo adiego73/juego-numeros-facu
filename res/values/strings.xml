@@ -9,5 +9,9 @@
     <string name="menu_scores">Puntajes</string>
     <string name="title_activity_scores">Puntajes</string>
     <string name="action_back">Volver</string>
+    
+    <string name="header_attempts_id">ID</string>
+    <string name="header_attempts_help">Ayuda</string>
+    <string name="header_attempts_number">Número</string>
 
 </resources>

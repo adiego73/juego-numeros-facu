@@ -24,8 +24,6 @@ public class ScoresActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scores);
 		listScores = (ListView) findViewById(R.id.listScores);
-		this.scoreAdapter = new ScoreAdapter(getBaseContext(), scores);
-		listScores.setAdapter(scoreAdapter);
 	}
 
 	@Override
@@ -55,7 +53,10 @@ public class ScoresActivity extends ActionBarActivity {
 		GetTask task = new GetTask(getBaseContext());
 		try {
 			scores = task.execute(new Void[1]).get();
-			this.scoreAdapter.notifyDataSetChanged();
+
+			this.scoreAdapter = new ScoreAdapter(getBaseContext(), scores);
+			listScores.setAdapter(scoreAdapter);
+
 		} catch (InterruptedException e) {
 			Toast.makeText(getApplicationContext(), e.getMessage(),
 					Toast.LENGTH_LONG).show();

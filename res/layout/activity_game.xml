@@ -27,8 +27,8 @@
         android:layout_alignLeft="@+id/numbersContainer"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="21dp"
-        android:text="@string/probar_boton" 
-        android:onClick="click_probarSuerte"/>
+        android:onClick="click_probarSuerte"
+        android:text="@string/probar_boton" />
 
     <Button
         android:id="@+id/btnReiniciar"
@@ -38,8 +38,8 @@
         android:layout_alignBaseline="@+id/btnProbar"
         android:layout_alignBottom="@+id/btnProbar"
         android:layout_alignRight="@+id/numbersContainer"
-        android:text="@string/reiniciar_boton" 
-        android:onClick="click_reiniciar"/>
+        android:onClick="click_reiniciar"
+        android:text="@string/reiniciar_boton" />
 
     <LinearLayout
         android:id="@+id/numbersContainer"
@@ -87,14 +87,50 @@
             android:maxLength="1" />
     </LinearLayout>
 
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txtAttemptHeaderId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="hola" />
+
+            <TextView
+                android:id="@+id/txtAttemptHeaderHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="hola" />
+
+            <TextView
+                android:id="@+id/txtAttemptHeaderNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="hola" />
+        </TableRow>
+
+        <TableRow>
+        </TableRow>
+    </TableLayout>
+
     <ListView
         android:id="@+id/listAttempts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnProbar"
         android:layout_alignLeft="@+id/numbersContainer"
-        android:layout_below="@+id/numbersContainer" >
-
+        android:layout_alignTop="@+id/tableLayout" >
     </ListView>
 
     <TextView

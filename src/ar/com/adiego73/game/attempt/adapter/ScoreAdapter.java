@@ -33,7 +33,7 @@ public class ScoreAdapter extends ArrayAdapter<Score> {
 		ViewHolder viewHolder;
 
 		if (vi == null) {
-			vi = inflater.inflate(R.layout.attempts_view_item_layout, parent,
+			vi = inflater.inflate(R.layout.scores_view_item_layout, parent,
 					false);
 
 			viewHolder = new ViewHolder();
