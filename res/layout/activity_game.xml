@@ -55,8 +55,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
-            android:maxLength="1" />
+            android:inputType="phone"
+            android:maxLength="1" 
+			android:digits="1234567890"/>
 
         <EditText
             android:id="@+id/segundoNumero"
@@ -64,8 +65,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
-            android:maxLength="1"
+            android:inputType="phone"
+            android:maxLength="1" 
+			android:digits="1234567890"
             android:width="20dp" />
 
         <EditText
@@ -74,8 +76,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
-            android:maxLength="1" />
+            android:inputType="phone"
+            android:maxLength="1" 
+			android:digits="1234567890" />
 
         <EditText
             android:id="@+id/cuartoNumero"
@@ -83,8 +86,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number"
-            android:maxLength="1" />
+            android:inputType="phone"
+            android:maxLength="1" 
+			android:digits="1234567890" />
     </LinearLayout>
 
     <TableLayout
