@@ -88,50 +88,46 @@
     </LinearLayout>
 
     <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1" >
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnProbar"
+        android:layout_alignLeft="@+id/btnProbar"
+        android:layout_alignRight="@+id/btnReiniciar"
+        android:layout_below="@+id/numbersContainer"
+        android:shrinkColumns="*"
+        android:stretchColumns="*" >
 
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+        <TableRow>
 
             <TextView
                 android:id="@+id/txtAttemptHeaderId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="hola" />
+                android:text="@string/header_attempts_id"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
                 android:id="@+id/txtAttemptHeaderHelp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="hola" />
+                android:text="@string/header_attempts_help"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
                 android:id="@+id/txtAttemptHeaderNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="hola" />
+                android:text="@string/header_attempts_number"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
 
-        <TableRow>
-        </TableRow>
+        <ListView
+            android:id="@+id/listAttempts"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp" >
+        </ListView>
     </TableLayout>
-
-    <ListView
-        android:id="@+id/listAttempts"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnProbar"
-        android:layout_alignLeft="@+id/numbersContainer"
-        android:layout_alignTop="@+id/tableLayout" >
-    </ListView>
 
     <TextView
         android:id="@+id/txtDebug"

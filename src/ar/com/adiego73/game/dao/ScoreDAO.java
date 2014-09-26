@@ -19,10 +19,12 @@ public final class ScoreDAO {
 
 	public ScoreDAO(Context c) {
 		dbHelper = new ScoreDBHelper(c);
+		if (db == null || !db.isOpen()) {
+			db = dbHelper.getWritableDatabase();
+		}
 	}
 
 	public Long saveScore(Score score) {
-		db = dbHelper.getWritableDatabase();
 		ContentValues values = new ContentValues();
 
 		values.put(ScoreContract.ScoreEntry.COLUMN_DATE,
@@ -36,7 +38,7 @@ public final class ScoreDAO {
 	public List<Score> getScores() {
 		List<Score> scores = new ArrayList<Score>();
 
-		db = dbHelper.getReadableDatabase();
+		// db = dbHelper.getReadableDatabase();
 		String[] columns = { ScoreContract.ScoreEntry._ID,
 				ScoreContract.ScoreEntry.COLUMN_DATE,
 				ScoreContract.ScoreEntry.COLUMN_SCORE };
