@@ -9,14 +9,12 @@
 *.class
 
 # generated files
-bin/
-gen/
+bin/*
+gen/*
 
 *.pydevproject
 .metadata
 .gradle
-bin/
-tmp/
 *.tmp
 *.bak
 *.swp
