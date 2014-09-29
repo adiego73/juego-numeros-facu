@@ -65,7 +65,7 @@ public final class ScoreDAO {
 	}
 
 	public static void destroy() {
-		if (db.isOpen()) {
+		if (db != null && db.isOpen()) {
 			db.close();
 		}
 	}
