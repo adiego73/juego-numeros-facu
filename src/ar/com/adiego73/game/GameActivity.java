@@ -111,7 +111,7 @@ public class GameActivity extends ActionBarActivity {
 		Attempt attempt = new Attempt();
 		attempt.setHelp(result);
 		attempt.setId(game.getIntentos());
-		attempt.setNumber(getIntFromNumbers(numeros));
+		attempt.setNumber(getStringFromNumbers(numeros));
 
 		addToListView(attempt);
 
@@ -198,6 +198,15 @@ public class GameActivity extends ActionBarActivity {
 		result += numbers.get(1) * 100;
 		result += numbers.get(2) * 10;
 		result += numbers.get(3);
+		return result;
+	}
+
+	private String getStringFromNumbers(List<Integer> numbers) {
+		String result = "";
+		result += numbers.get(0).toString();
+		result += numbers.get(1).toString();
+		result += numbers.get(2).toString();
+		result += numbers.get(3).toString();
 		return result;
 	}
 

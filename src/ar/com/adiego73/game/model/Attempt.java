@@ -3,7 +3,7 @@ package ar.com.adiego73.game.model;
 public class Attempt {
 
 	private Integer id;
-	private Integer number;
+	private String number;
 	private String help;
 
 	public Integer getId() {
@@ -14,11 +14,11 @@ public class Attempt {
 		this.id = id;
 	}
 
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(Integer number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
