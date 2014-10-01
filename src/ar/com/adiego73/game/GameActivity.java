@@ -28,7 +28,7 @@ import ar.com.adiego73.game.utils.EventFactory;
 
 public class GameActivity extends ActionBarActivity {
 
-	private List<EditText> numbers;
+	private List<EditText> numbersEditText;
 	private ListView listAttempts;
 	private AttemptAdapter attemptsAdapter;
 	private List<Attempt> attempts;
@@ -40,11 +40,11 @@ public class GameActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_game);
 
 		this.attempts = new ArrayList<Attempt>();
-		this.numbers = new ArrayList<EditText>();
-		this.numbers.add((EditText) findViewById(R.id.primerNumero));
-		this.numbers.add((EditText) findViewById(R.id.segundoNumero));
-		this.numbers.add((EditText) findViewById(R.id.tercerNumero));
-		this.numbers.add((EditText) findViewById(R.id.cuartoNumero));
+		this.numbersEditText = new ArrayList<EditText>();
+		this.numbersEditText.add((EditText) findViewById(R.id.primerNumero));
+		this.numbersEditText.add((EditText) findViewById(R.id.segundoNumero));
+		this.numbersEditText.add((EditText) findViewById(R.id.tercerNumero));
+		this.numbersEditText.add((EditText) findViewById(R.id.cuartoNumero));
 		this.listAttempts = (ListView) findViewById(R.id.listAttempts);
 
 		this.attemptsAdapter = new AttemptAdapter(getBaseContext(), attempts);
@@ -54,11 +54,11 @@ public class GameActivity extends ActionBarActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		Iterator<EditText> it = numbers.iterator();
+		Iterator<EditText> it = numbersEditText.iterator();
 		Integer num = 1;
 		while (it.hasNext()) {
 			EditText et = it.next();
-			EditText next = it.hasNext() ? numbers.get(num) : null;
+			EditText next = it.hasNext() ? numbersEditText.get(num) : null;
 			et.addTextChangedListener(EventFactory
 					.createTextWatcher(
 							et,
@@ -98,11 +98,11 @@ public class GameActivity extends ActionBarActivity {
 	}
 
 	public void click_probarSuerte(View v) {
-		ArrayList<Integer> numeros = getNumbersFromTextEdit(numbers);
+		ArrayList<Integer> numeros = getNumbersFromTextEdit(numbersEditText);
 
 		if (numeros.isEmpty()) {
 			this.showMessage("Error", "Complete todos los numeros");
-			numbers.get(0).requestFocus();
+			numbersEditText.get(0).requestFocus();
 			return;
 		}
 
@@ -128,7 +128,7 @@ public class GameActivity extends ActionBarActivity {
 			game.build();
 			emptyListView();
 		}
-		numbers.get(0).requestFocus();
+		numbersEditText.get(0).requestFocus();
 	}
 
 	public void click_reiniciar(View v) {
@@ -139,7 +139,7 @@ public class GameActivity extends ActionBarActivity {
 						+ game.getNumeroAdivinar());
 		game.build();
 		this.resetNumbers();
-		numbers.get(0).requestFocus();
+		numbersEditText.get(0).requestFocus();
 		emptyListView();
 	}
 
@@ -206,7 +206,7 @@ public class GameActivity extends ActionBarActivity {
 	}
 
 	private void resetNumbers() {
-		for (EditText et : numbers) {
+		for (EditText et : numbersEditText) {
 			et.setText("");
 		}
 	}
