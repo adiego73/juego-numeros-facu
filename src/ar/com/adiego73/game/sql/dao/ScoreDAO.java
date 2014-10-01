@@ -1,4 +1,4 @@
-package ar.com.adiego73.game.dao;
+package ar.com.adiego73.game.sql.dao;
 
 import java.util.ArrayList;
 import java.util.Date;

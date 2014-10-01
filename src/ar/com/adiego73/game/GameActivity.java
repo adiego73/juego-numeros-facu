@@ -19,10 +19,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import ar.com.adiego73.game.attempt.adapter.AttemptAdapter;
-import ar.com.adiego73.game.dao.ScoreDAO;
 import ar.com.adiego73.game.model.Attempt;
 import ar.com.adiego73.game.model.Game;
 import ar.com.adiego73.game.model.Score;
+import ar.com.adiego73.game.sql.dao.ScoreDAO;
 import ar.com.adiego73.game.sql.task.SaveTask;
 import ar.com.adiego73.game.utils.EventFactory;
 

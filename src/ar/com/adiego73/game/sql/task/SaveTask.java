@@ -2,8 +2,8 @@ package ar.com.adiego73.game.sql.task;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import ar.com.adiego73.game.dao.ScoreDAO;
 import ar.com.adiego73.game.model.Score;
+import ar.com.adiego73.game.sql.dao.ScoreDAO;
 
 public class SaveTask extends AsyncTask<Score, Void, Void> {
 

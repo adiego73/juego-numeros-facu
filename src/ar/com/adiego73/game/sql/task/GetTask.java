@@ -4,8 +4,8 @@ import java.util.List;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import ar.com.adiego73.game.dao.ScoreDAO;
 import ar.com.adiego73.game.model.Score;
+import ar.com.adiego73.game.sql.dao.ScoreDAO;
 
 public class GetTask extends AsyncTask<Void, Void, List<Score>> {
 
