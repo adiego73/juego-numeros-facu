@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import ar.com.adiego73.game.attempt.adapter.AttemptAdapter;
 import ar.com.adiego73.game.dao.ScoreDAO;
 import ar.com.adiego73.game.model.Attempt;
@@ -31,7 +30,6 @@ public class GameActivity extends ActionBarActivity {
 
 	private List<EditText> numbers;
 	private ListView listAttempts;
-	private TextView txtDebug;
 	private AttemptAdapter attemptsAdapter;
 	private List<Attempt> attempts;
 	private Game game = new Game();
@@ -47,7 +45,6 @@ public class GameActivity extends ActionBarActivity {
 		this.numbers.add((EditText) findViewById(R.id.segundoNumero));
 		this.numbers.add((EditText) findViewById(R.id.tercerNumero));
 		this.numbers.add((EditText) findViewById(R.id.cuartoNumero));
-		this.txtDebug = (TextView) findViewById(R.id.txtDebug);
 		this.listAttempts = (ListView) findViewById(R.id.listAttempts);
 
 		this.attemptsAdapter = new AttemptAdapter(getBaseContext(), attempts);
@@ -85,6 +82,9 @@ public class GameActivity extends ActionBarActivity {
 		case R.id.action_scores:
 			goToScoresActivity();
 			return true;
+		case R.id.action_howto:
+			goToHowtoActivity();
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -106,7 +106,10 @@ public class GameActivity extends ActionBarActivity {
 			return;
 		}
 
-		String result = game.probarNumeros(numeros);
+		Integer resultNum[] = game.probarNumeros(numeros);
+		String bien = resultNum[0] > 0 ? resultNum[0] + "B" : "";
+		String regular = resultNum[1] > 0 ? resultNum[1] + "R" : "";
+		String result = bien + " " + regular;
 
 		Attempt attempt = new Attempt();
 		attempt.setHelp(result);
@@ -154,6 +157,11 @@ public class GameActivity extends ActionBarActivity {
 		startActivity(intent);
 	}
 
+	private void goToHowtoActivity() {
+		Intent intent = new Intent(this, HowToActivity.class);
+		startActivity(intent);
+	}
+
 	private void showMessage(String title, String message) {
 		new AlertDialog.Builder(GameActivity.this).setTitle(title)
 				.setMessage(message).setCancelable(true)
@@ -168,15 +176,12 @@ public class GameActivity extends ActionBarActivity {
 
 	private ArrayList<Integer> getNumbersFromTextEdit(List<EditText> numbers) {
 		ArrayList<Integer> result = new ArrayList<Integer>();
-
 		for (EditText et : numbers) {
 			if (et.getText().length() == 0) {
 				return new ArrayList<Integer>();
 			}
-
 			result.add(Integer.valueOf(et.getText().toString()));
 		}
-
 		return result;
 	}
 
@@ -192,21 +197,11 @@ public class GameActivity extends ActionBarActivity {
 		listAttempts.setAdapter(attemptsAdapter);
 	}
 
-	private Integer getIntFromNumbers(List<Integer> numbers) {
-		Integer result = 0;
-		result += numbers.get(0) * 1000;
-		result += numbers.get(1) * 100;
-		result += numbers.get(2) * 10;
-		result += numbers.get(3);
-		return result;
-	}
-
 	private String getStringFromNumbers(List<Integer> numbers) {
 		String result = "";
-		result += numbers.get(0).toString();
-		result += numbers.get(1).toString();
-		result += numbers.get(2).toString();
-		result += numbers.get(3).toString();
+		for (Integer g : numbers) {
+			result += g.toString();
+		}
 		return result;
 	}
 

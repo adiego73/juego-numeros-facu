@@ -28,6 +28,10 @@
             android:label="@string/title_activity_scores"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".HowToActivity"
+            android:label="@string/title_activity_how_to" >
+        </activity>
     </application>
 
 </manifest>

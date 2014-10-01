@@ -1,5 +1,6 @@
 package ar.com.adiego73.game.utils;
 
+import java.util.List;
 import java.util.Random;
 
 public class NumbersUtils {
@@ -7,21 +8,22 @@ public class NumbersUtils {
 	private static Integer MIN_NUM = 0;
 	private static Integer MAX_NUM = 9;
 
-	public static void setRandomNumber(Integer[] numeroAdivinar) {
+	public static void setRandomNumber(List<Integer> numeroAdivinar,
+			Integer amountNumbers) {
 
-		for (int i = 0; i < numeroAdivinar.length; i++) {
+		numeroAdivinar.clear();
+		for (int i = 0; i < amountNumbers; i++) {
 			Integer numero;
 			if (i == 0) {
 				numero = getRandomWithMinMax(MIN_NUM + 1, MAX_NUM);
-				numeroAdivinar[0] = numero;
 			} else {
 				do {
 					numero = getRandomWithMinMax(MIN_NUM, MAX_NUM);
-				} while (numero == numeroAdivinar[i - 1]);
-				numeroAdivinar[i] = numero;
+					// si el numero no puede estar, no esta en ningun lado..
+				} while (numeroAdivinar.contains(numero));
 			}
+			numeroAdivinar.add(i, numero);
 		}
-
 	}
 
 	private static Integer getRandomWithMinMax(int min, int max) {
@@ -29,5 +31,4 @@ public class NumbersUtils {
 		int randomNum = rand.nextInt((max - min) + 1) + min;
 		return randomNum;
 	}
-
 }

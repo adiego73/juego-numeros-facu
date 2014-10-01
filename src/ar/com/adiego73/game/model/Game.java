@@ -9,8 +9,9 @@ import ar.com.adiego73.game.utils.NumbersUtils;
 public class Game implements Serializable {
 
 	private static final long serialVersionUID = -2125128642666543600L;
+	private static final Integer CANT_NUM = 4;
 
-	private Integer numeroAdivinar[] = new Integer[4];
+	private List<Integer> numeroAdivinar = new ArrayList<Integer>(CANT_NUM);
 	private Integer intentos;
 	private Boolean gano;
 	private List<Attempt> attempts;
@@ -22,26 +23,26 @@ public class Game implements Serializable {
 	public void build() {
 		intentos = 0;
 		gano = Boolean.FALSE;
-		NumbersUtils.setRandomNumber(numeroAdivinar);
+		NumbersUtils.setRandomNumber(numeroAdivinar, CANT_NUM);
 		attempts = new ArrayList<Attempt>();
 	}
 
-	public String probarNumeros(List<Integer> numeros) {
+	public Integer[] probarNumeros(List<Integer> numeros) {
 		Integer regular = 0;
 		Integer bien = 0;
-		String result = "";
-		for (int i = 0; i < numeroAdivinar.length; i++) {
-			if (numeroAdivinar[i].equals(numeros.get(i))) {
+		Integer result[] = new Integer[2];
+		for (int i = 0; i < numeroAdivinar.size(); i++) {
+			if (numeroAdivinar.get(i).equals(numeros.get(i))) {
 				bien++;
-			} else if (numeros.contains(numeroAdivinar[i])) {
+			} else if (numeros.contains(numeroAdivinar.get(i))) {
 				regular++;
 			}
 		}
 		intentos++;
-		result += (bien > 0) ? bien + "B " : "";
-		result += (regular > 0) ? regular + "R" : "";
+		result[0] = bien;
+		result[1] = regular;
 
-		if (bien == 4)
+		if (bien == CANT_NUM)
 			gano = Boolean.TRUE;
 
 		return result;
@@ -57,8 +58,8 @@ public class Game implements Serializable {
 
 	public Integer getNumeroAdivinar() {
 		String numero = "";
-		for (int i = 0; i < numeroAdivinar.length; i++) {
-			numero += numeroAdivinar[i];
+		for (Integer i : numeroAdivinar) {
+			numero += i.toString();
 		}
 		return Integer.valueOf(numero);
 	}
