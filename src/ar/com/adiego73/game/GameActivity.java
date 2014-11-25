@@ -9,7 +9,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.res.AssetManager;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -18,12 +20,15 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import ar.com.adiego73.game.attempt.adapter.AttemptAdapter;
 import ar.com.adiego73.game.model.Attempt;
 import ar.com.adiego73.game.model.Game;
 import ar.com.adiego73.game.model.Score;
 import ar.com.adiego73.game.sql.dao.ScoreDAO;
 import ar.com.adiego73.game.sql.task.SaveTask;
+import ar.com.adiego73.game.utils.AssetsHelper;
 import ar.com.adiego73.game.utils.EventFactory;
 
 public class GameActivity extends ActionBarActivity {
@@ -47,8 +52,17 @@ public class GameActivity extends ActionBarActivity {
 		this.numbersEditText.add((EditText) findViewById(R.id.cuartoNumero));
 		this.listAttempts = (ListView) findViewById(R.id.listAttempts);
 
-		this.attemptsAdapter = new AttemptAdapter(getBaseContext(), attempts);
+		this.attemptsAdapter = new AttemptAdapter(getBaseContext(), getAssets(), attempts);
 		listAttempts.setAdapter(attemptsAdapter);
+				
+		for(EditText et : numbersEditText){
+			et.setTypeface(AssetsHelper.getTypeFace(getAssets()));
+		}
+		
+		((TextView) findViewById(R.id.textView1)).setTypeface(AssetsHelper.getTypeFace(getAssets()));
+		((TextView) findViewById(R.id.txtAttemptHeaderId)).setTypeface(AssetsHelper.getTypeFace(getAssets()));
+		((TextView) findViewById(R.id.txtAttemptHeaderHelp)).setTypeface(AssetsHelper.getTypeFace(getAssets()));
+		((TextView) findViewById(R.id.txtAttemptHeaderNumber)).setTypeface(AssetsHelper.getTypeFace(getAssets()));
 	}
 
 	@Override
@@ -193,7 +207,7 @@ public class GameActivity extends ActionBarActivity {
 
 	private void emptyListView() {
 		attempts = new ArrayList<Attempt>();
-		attemptsAdapter = new AttemptAdapter(getBaseContext(), attempts);
+		attemptsAdapter = new AttemptAdapter(getBaseContext(), getAssets(), attempts);
 		listAttempts.setAdapter(attemptsAdapter);
 	}
 

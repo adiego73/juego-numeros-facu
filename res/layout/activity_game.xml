@@ -19,27 +19,25 @@
         android:text="@string/ingrese_numero"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/btnProbar"
-        style="?android:attr/buttonStyleSmall"
+    <include
+        android:id="@+id/btnProbar" 
+        layout="@layout/go_button_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/numbersContainer"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="21dp"
-        android:onClick="click_probarSuerte"
-        android:text="@string/probar_boton" />
-
-    <Button
-        android:id="@+id/btnReiniciar"
-        style="?android:attr/buttonStyleSmall"
+        />
+    
+    <include
+        android:id="@+id/btnReiniciar" 
+        layout="@layout/reset_button_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/btnProbar"
         android:layout_alignBottom="@+id/btnProbar"
         android:layout_alignRight="@+id/numbersContainer"
-        android:onClick="click_reiniciar"
-        android:text="@string/reiniciar_boton" />
+        />
 
     <LinearLayout
         android:id="@+id/numbersContainer"

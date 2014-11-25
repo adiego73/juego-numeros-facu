@@ -3,22 +3,26 @@ package ar.com.adiego73.game.attempt.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import ar.com.adiego73.game.model.Attempt;
+import ar.com.adiego73.game.utils.AssetsHelper;
 
 public class AttemptAdapter extends ArrayAdapter<Attempt> {
 
 	private Context context;
+	private AssetManager assets;
 	private List<Attempt> attempts;
 	private static LayoutInflater inflater = null;
 
-	public AttemptAdapter(Context cntx, List<Attempt> attempts) {
+	public AttemptAdapter(Context cntx, AssetManager assets, List<Attempt> attempts) {
 		super(cntx, ar.com.adiego73.game.R.layout.attempts_view_item_layout,
 				attempts);
+		this.assets = assets;
 		this.context = cntx;
 		this.attempts = attempts;
 		inflater = (LayoutInflater) context
@@ -53,6 +57,10 @@ public class AttemptAdapter extends ArrayAdapter<Attempt> {
 			viewHolder.id.setText(att.getId().toString());
 			viewHolder.help.setText(att.getHelp());
 			viewHolder.number.setText(att.getNumber().toString());
+			
+			viewHolder.id.setTypeface(AssetsHelper.getTypeFace(assets));
+			viewHolder.help.setTypeface(AssetsHelper.getTypeFace(assets));
+			viewHolder.number.setTypeface(AssetsHelper.getTypeFace(assets));
 		}
 
 		return vi;
