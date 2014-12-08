@@ -2,6 +2,7 @@ package ar.com.adiego73.game.attempt.adapter;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import ar.com.adiego73.game.R;
 import ar.com.adiego73.game.model.Score;
+import ar.com.adiego73.game.utils.AssetsHelper;
 
 public class ScoreAdapter extends ArrayAdapter<Score> {
 
@@ -38,8 +40,10 @@ public class ScoreAdapter extends ArrayAdapter<Score> {
 
 			viewHolder = new ViewHolder();
 			viewHolder.date = (TextView) vi.findViewById(R.id.txtScoreDate);
+			viewHolder.date.setTypeface(AssetsHelper.getDolceFontTypeFace());
 			viewHolder.totalAttempts = (TextView) vi
 					.findViewById(R.id.txtScoreTotalAttempts);
+			viewHolder.totalAttempts.setTypeface(AssetsHelper.getDolceFontTypeFace());
 
 			vi.setTag(viewHolder);
 		} else {
@@ -48,7 +52,7 @@ public class ScoreAdapter extends ArrayAdapter<Score> {
 
 		if (!scores.isEmpty()) {
 			Score score = scores.get(position);
-			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+			SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy", new Locale("es_AR"));
 			viewHolder.date.setText(format.format(score.getDate()));
 			viewHolder.totalAttempts.setText(score.getScore().toString());
 		}

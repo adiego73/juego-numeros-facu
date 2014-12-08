@@ -17,8 +17,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -44,6 +47,8 @@ public class GameActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 
+		AssetsHelper.build(getAssets());
+
 		this.attempts = new ArrayList<Attempt>();
 		this.numbersEditText = new ArrayList<EditText>();
 		this.numbersEditText.add((EditText) findViewById(R.id.primerNumero));
@@ -56,15 +61,18 @@ public class GameActivity extends ActionBarActivity {
 		listAttempts.setAdapter(attemptsAdapter);
 				
 		for(EditText et : numbersEditText){
-			et.setTypeface(AssetsHelper.getTypeFace(getAssets()));
+			et.setTypeface(AssetsHelper.getDolceFontTypeFace());
 		}
 		
-		((TextView) findViewById(R.id.textView1)).setTypeface(AssetsHelper.getTypeFace(getAssets()));
-		((TextView) findViewById(R.id.txtAttemptHeaderId)).setTypeface(AssetsHelper.getTypeFace(getAssets()));
-		((TextView) findViewById(R.id.txtAttemptHeaderHelp)).setTypeface(AssetsHelper.getTypeFace(getAssets()));
-		((TextView) findViewById(R.id.txtAttemptHeaderNumber)).setTypeface(AssetsHelper.getTypeFace(getAssets()));
+		((TextView) findViewById(R.id.textView1)).setTypeface(AssetsHelper.getCodeFontTypeFace());
+		((TextView) findViewById(R.id.txtAttemptHeaderId)).setTypeface(AssetsHelper.getCodeFontTypeFace());
+		((TextView) findViewById(R.id.txtAttemptHeaderHelp)).setTypeface(AssetsHelper.getCodeFontTypeFace());
+		((TextView) findViewById(R.id.txtAttemptHeaderNumber)).setTypeface(AssetsHelper.getCodeFontTypeFace());
+		
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 	}
-
+	
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -224,4 +232,5 @@ public class GameActivity extends ActionBarActivity {
 			et.setText("");
 		}
 	}
+	
 }

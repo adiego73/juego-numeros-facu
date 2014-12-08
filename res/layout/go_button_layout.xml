@@ -9,6 +9,6 @@
         android:layout_alignParentTop="true"
         android:clickable="true"
         android:onClick="click_probarSuerte"
-        android:src="@drawable/ic_go" />
+        android:src="@drawable/go_selector" />
 
 </RelativeLayout>

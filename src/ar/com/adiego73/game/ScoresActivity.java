@@ -7,11 +7,14 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import ar.com.adiego73.game.attempt.adapter.ScoreAdapter;
 import ar.com.adiego73.game.model.Score;
 import ar.com.adiego73.game.sql.task.GetTask;
+import ar.com.adiego73.game.utils.AssetsHelper;
 
 public class ScoresActivity extends ActionBarActivity {
 
@@ -24,6 +27,12 @@ public class ScoresActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scores);
 		listScores = (ListView) findViewById(R.id.listScores);
+		
+		((TextView) findViewById(R.id.txtScoreDate)).setTypeface(AssetsHelper.getCodeFontTypeFace());
+		((TextView) findViewById(R.id.txtScoreTotalAttempts)).setTypeface(AssetsHelper.getCodeFontTypeFace());
+		
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 	}
 
 	@Override

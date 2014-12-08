@@ -33,6 +33,8 @@ public class AttemptAdapter extends ArrayAdapter<Attempt> {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View vi = convertView;
 		ViewHolder viewHolder;
+		
+//		AssetsHelper.build(this.assets);
 
 		if (vi == null) {
 			vi = inflater.inflate(
@@ -58,9 +60,9 @@ public class AttemptAdapter extends ArrayAdapter<Attempt> {
 			viewHolder.help.setText(att.getHelp());
 			viewHolder.number.setText(att.getNumber().toString());
 			
-			viewHolder.id.setTypeface(AssetsHelper.getTypeFace(assets));
-			viewHolder.help.setTypeface(AssetsHelper.getTypeFace(assets));
-			viewHolder.number.setTypeface(AssetsHelper.getTypeFace(assets));
+			viewHolder.id.setTypeface(AssetsHelper.getDolceFontTypeFace());
+			viewHolder.help.setTypeface(AssetsHelper.getDolceFontTypeFace());
+			viewHolder.number.setTypeface(AssetsHelper.getDolceFontTypeFace());
 		}
 
 		return vi;
