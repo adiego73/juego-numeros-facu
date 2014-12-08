@@ -3,7 +3,6 @@ package ar.com.adiego73.game.attempt.adapter;
 import java.util.List;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,14 +14,12 @@ import ar.com.adiego73.game.utils.AssetsHelper;
 public class AttemptAdapter extends ArrayAdapter<Attempt> {
 
 	private Context context;
-	private AssetManager assets;
 	private List<Attempt> attempts;
 	private static LayoutInflater inflater = null;
 
-	public AttemptAdapter(Context cntx, AssetManager assets, List<Attempt> attempts) {
+	public AttemptAdapter(Context cntx, List<Attempt> attempts) {
 		super(cntx, ar.com.adiego73.game.R.layout.attempts_view_item_layout,
 				attempts);
-		this.assets = assets;
 		this.context = cntx;
 		this.attempts = attempts;
 		inflater = (LayoutInflater) context

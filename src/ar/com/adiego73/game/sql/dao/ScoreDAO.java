@@ -42,7 +42,7 @@ public final class ScoreDAO {
 		String[] columns = { ScoreContract.ScoreEntry._ID,
 				ScoreContract.ScoreEntry.COLUMN_DATE,
 				ScoreContract.ScoreEntry.COLUMN_SCORE };
-		String orderBy = ScoreContract.ScoreEntry._ID + " ASC";
+		String orderBy = ScoreContract.ScoreEntry.COLUMN_SCORE + " ASC";
 
 		Cursor cursor = db.query(ScoreContract.ScoreEntry.TABLE_NAME, columns,
 				null, null, null, null, orderBy);

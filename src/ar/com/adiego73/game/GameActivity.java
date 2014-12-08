@@ -9,9 +9,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.res.AssetManager;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -20,10 +18,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import ar.com.adiego73.game.attempt.adapter.AttemptAdapter;
 import ar.com.adiego73.game.model.Attempt;
@@ -57,7 +52,7 @@ public class GameActivity extends ActionBarActivity {
 		this.numbersEditText.add((EditText) findViewById(R.id.cuartoNumero));
 		this.listAttempts = (ListView) findViewById(R.id.listAttempts);
 
-		this.attemptsAdapter = new AttemptAdapter(getBaseContext(), getAssets(), attempts);
+		this.attemptsAdapter = new AttemptAdapter(getBaseContext(), attempts);
 		listAttempts.setAdapter(attemptsAdapter);
 				
 		for(EditText et : numbersEditText){
@@ -215,7 +210,7 @@ public class GameActivity extends ActionBarActivity {
 
 	private void emptyListView() {
 		attempts = new ArrayList<Attempt>();
-		attemptsAdapter = new AttemptAdapter(getBaseContext(), getAssets(), attempts);
+		attemptsAdapter = new AttemptAdapter(getBaseContext(), attempts);
 		listAttempts.setAdapter(attemptsAdapter);
 	}
 
