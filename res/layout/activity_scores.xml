@@ -8,6 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:shrinkColumns="*"
     android:stretchColumns="*"
+    android:background="@drawable/background"
     tools:context="ar.com.adiego73.game.ScoresActivity" >
 
     <TableRow

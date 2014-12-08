@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Adivina el Número</string>
+    <string name="app_name">Adinúmero</string>
     <string name="action_settings">Settings</string>
     <string name="ingrese_numero">Ingrese un Número y adivine</string>
     <string name="probar_boton">Voy a tener suerte!</string>
