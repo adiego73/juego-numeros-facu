@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import ar.com.adiego73.game.attempt.adapter.ScoreAdapter;
+import ar.com.adiego73.game.adapter.ScoreAdapter;
 import ar.com.adiego73.game.model.Score;
 import ar.com.adiego73.game.sql.task.GetTask;
 import ar.com.adiego73.game.utils.AssetsHelper;

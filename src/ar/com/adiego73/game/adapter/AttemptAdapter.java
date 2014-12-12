@@ -1,4 +1,4 @@
-package ar.com.adiego73.game.attempt.adapter;
+package ar.com.adiego73.game.adapter;
 
 import java.util.List;
 

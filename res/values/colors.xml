@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <color name="celeste">#99CCFF</color>
-
+	<item name="celeste" type="color">#33B5E5</item>
 </resources>

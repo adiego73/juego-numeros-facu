@@ -20,7 +20,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import ar.com.adiego73.game.attempt.adapter.AttemptAdapter;
+import ar.com.adiego73.game.adapter.AttemptAdapter;
 import ar.com.adiego73.game.model.Attempt;
 import ar.com.adiego73.game.model.Game;
 import ar.com.adiego73.game.model.Score;
