@@ -6,10 +6,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import android.app.AlertDialog;
+import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.inputmethodservice.InputMethodService;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.KeyEvent;
@@ -36,6 +38,7 @@ public class GameActivity extends ActionBarActivity {
 	private ListView listAttempts;
 	private AttemptAdapter attemptsAdapter;
 	private List<Attempt> attempts;
+	private InputMethodManager keyboard;
 	private Game game = new Game();
 
 	@Override
@@ -43,6 +46,8 @@ public class GameActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 
+		this.keyboard = (InputMethodManager) this
+				.getSystemService(Service.INPUT_METHOD_SERVICE);
 		this.attempts = new ArrayList<Attempt>();
 		this.numbersEditText = new ArrayList<EditText>();
 		this.numbersEditText.add((EditText) findViewById(R.id.primerNumero));
@@ -53,21 +58,25 @@ public class GameActivity extends ActionBarActivity {
 
 		this.attemptsAdapter = new AttemptAdapter(getBaseContext(), attempts);
 		listAttempts.setAdapter(attemptsAdapter);
-				
-		for(EditText et : numbersEditText){
+
+		for (EditText et : numbersEditText) {
 			et.setTypeface(AssetsHelper.getDolceFontTypeFace());
 		}
-		
-		((TextView) findViewById(R.id.textView1)).setTypeface(AssetsHelper.getCodeFontTypeFace());
-		((TextView) findViewById(R.id.txtAttemptHeaderId)).setTypeface(AssetsHelper.getCodeFontTypeFace());
-		((TextView) findViewById(R.id.txtAttemptHeaderHelp)).setTypeface(AssetsHelper.getCodeFontTypeFace());
-		((TextView) findViewById(R.id.txtAttemptHeaderNumber)).setTypeface(AssetsHelper.getCodeFontTypeFace());
-		
+
+		((TextView) findViewById(R.id.textView1)).setTypeface(AssetsHelper
+				.getCodeFontTypeFace());
+		((TextView) findViewById(R.id.txtAttemptHeaderId))
+				.setTypeface(AssetsHelper.getCodeFontTypeFace());
+		((TextView) findViewById(R.id.txtAttemptHeaderHelp))
+				.setTypeface(AssetsHelper.getCodeFontTypeFace());
+		((TextView) findViewById(R.id.txtAttemptHeaderNumber))
+				.setTypeface(AssetsHelper.getCodeFontTypeFace());
+
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		getWindow().clearFlags(
 				WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 	}
-	
+
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -130,7 +139,7 @@ public class GameActivity extends ActionBarActivity {
 
 		Attempt attempt = new Attempt();
 		attempt.setHelp(result);
-		attempt.setId(game.getIntentos());
+		attempt.setIntento(game.getIntentos());
 		attempt.setNumber(getStringFromNumbers(numeros));
 
 		addToListView(attempt);
@@ -142,10 +151,11 @@ public class GameActivity extends ActionBarActivity {
 					"Felicitaciones! Ganaste en " + game.getIntentos()
 							+ " intentos.");
 			this.saveScore(game.getIntentos());
-			game.build();
+			game.init();
 			emptyListView();
 		}
 		numbersEditText.get(0).requestFocus();
+		keyboard.showSoftInput(numbersEditText.get(0), InputMethodManager.SHOW_FORCED);
 	}
 
 	public void click_reiniciar(View v) {
@@ -154,20 +164,21 @@ public class GameActivity extends ActionBarActivity {
 				"En " + game.getIntentos()
 						+ " intentos no adivinaste el numero: "
 						+ game.getNumeroAdivinar());
-		game.build();
+		game.init();
 		this.resetNumbers();
 		numbersEditText.get(0).requestFocus();
+		keyboard.showSoftInput(numbersEditText.get(0), InputMethodManager.SHOW_FORCED);
 		emptyListView();
 	}
-	
+
 	// sobre escribo esto para que no vuelva al splash
 	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event)  {
-	    if (keyCode == KeyEvent.KEYCODE_BACK ) {
-	        return true;
-	    }
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			return true;
+		}
 
-	    return super.onKeyDown(keyCode, event);
+		return super.onKeyDown(keyCode, event);
 	}
 
 	private void saveScore(Integer intentos) {
@@ -237,5 +248,5 @@ public class GameActivity extends ActionBarActivity {
 			et.setText("");
 		}
 	}
-	
+
 }

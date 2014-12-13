@@ -31,19 +31,17 @@ public class AttemptAdapter extends ArrayAdapter<Attempt> {
 		View vi = convertView;
 		ViewHolder viewHolder;
 		
-//		AssetsHelper.build(this.assets);
-
 		if (vi == null) {
 			vi = inflater.inflate(
 					ar.com.adiego73.game.R.layout.attempts_view_item_layout,
 					parent, false);
 
 			viewHolder = new ViewHolder();
-			viewHolder.id = (TextView) vi
+			viewHolder.intento = (TextView) vi
 					.findViewById(ar.com.adiego73.game.R.id.txtAttemptId);
-			viewHolder.help = (TextView) vi
+			viewHolder.ayuda = (TextView) vi
 					.findViewById(ar.com.adiego73.game.R.id.txtAttemptHelp);
-			viewHolder.number = (TextView) vi
+			viewHolder.numero = (TextView) vi
 					.findViewById(ar.com.adiego73.game.R.id.txtAttemptNumber);
 
 			vi.setTag(viewHolder);
@@ -53,22 +51,22 @@ public class AttemptAdapter extends ArrayAdapter<Attempt> {
 
 		if (!attempts.isEmpty()) {
 			Attempt att = attempts.get(position);
-			viewHolder.id.setText(att.getId().toString());
-			viewHolder.help.setText(att.getHelp());
-			viewHolder.number.setText(att.getNumber().toString());
+			viewHolder.intento.setText(att.getIntento().toString());
+			viewHolder.ayuda.setText(att.getHelp());
+			viewHolder.numero.setText(att.getNumber().toString());
 			
-			viewHolder.id.setTypeface(AssetsHelper.getDolceFontTypeFace());
-			viewHolder.help.setTypeface(AssetsHelper.getDolceFontTypeFace());
-			viewHolder.number.setTypeface(AssetsHelper.getDolceFontTypeFace());
+			viewHolder.intento.setTypeface(AssetsHelper.getDolceFontTypeFace());
+			viewHolder.ayuda.setTypeface(AssetsHelper.getDolceFontTypeFace());
+			viewHolder.numero.setTypeface(AssetsHelper.getDolceFontTypeFace());
 		}
 
 		return vi;
 	}
 
 	private static class ViewHolder {
-		public TextView id;
-		public TextView help;
-		public TextView number;
+		public TextView intento;
+		public TextView ayuda;
+		public TextView numero;
 	}
 
 }

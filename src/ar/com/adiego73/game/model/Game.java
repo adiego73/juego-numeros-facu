@@ -17,10 +17,10 @@ public class Game implements Serializable {
 	private List<Attempt> attempts;
 
 	public Game() {
-		this.build();
+		this.init();
 	}
 
-	public void build() {
+	public void init() {
 		intentos = 0;
 		gano = Boolean.FALSE;
 		NumbersUtils.setRandomNumber(numeroAdivinar, CANT_NUM);
