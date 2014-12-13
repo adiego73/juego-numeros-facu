@@ -11,10 +11,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.inputmethodservice.InputMethodService;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -169,16 +167,6 @@ public class GameActivity extends ActionBarActivity {
 		numbersEditText.get(0).requestFocus();
 		keyboard.showSoftInput(numbersEditText.get(0), InputMethodManager.SHOW_FORCED);
 		emptyListView();
-	}
-
-	// sobre escribo esto para que no vuelva al splash
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if (keyCode == KeyEvent.KEYCODE_BACK) {
-			return true;
-		}
-
-		return super.onKeyDown(keyCode, event);
 	}
 
 	private void saveScore(Integer intentos) {

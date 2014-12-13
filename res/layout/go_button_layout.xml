@@ -8,6 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:clickable="true"
+        android:contentDescription="Jugar!"
         android:onClick="click_probarSuerte"
         android:src="@drawable/go_selector" />
 

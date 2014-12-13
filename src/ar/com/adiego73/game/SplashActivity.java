@@ -9,7 +9,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import ar.com.adiego73.game.utils.AssetsHelper;
 
 public class SplashActivity extends Activity {

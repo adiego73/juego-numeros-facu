@@ -8,6 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:clickable="true"
+        android:contentDescription="Reiniciar"
         android:onClick="click_reiniciar"
         android:src="@drawable/reload_selector" />
 
