@@ -107,47 +107,51 @@
     </LinearLayout>
 
     <TableLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnProbar"
         android:layout_alignLeft="@+id/btnProbar"
         android:layout_alignRight="@+id/btnReiniciar"
         android:layout_below="@+id/numbersContainer"
+        android:layout_marginTop="6pt"
+        android:gravity="center_horizontal"
         android:shrinkColumns="*"
-        android:stretchColumns="*" >
+        android:stretchColumns="1" >
 
         <TableRow>
 
             <TextView
                 android:id="@+id/txtAttemptHeaderId"
-                android:layout_width="wrap_content"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6pt"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/header_attempts_id"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
                 android:id="@+id/txtAttemptHeaderHelp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6pt"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/header_attempts_help"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
                 android:id="@+id/txtAttemptHeaderNumber"
-                android:layout_width="wrap_content"
+                android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6pt"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:text="@string/header_attempts_number"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
 
         <ListView
             android:id="@+id/listAttempts"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="0dp" >
+            android:layout_height="fill_parent"
+            android:layout_marginTop="2dp" >
         </ListView>
     </TableLayout>
 

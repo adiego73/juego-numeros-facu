@@ -36,8 +36,6 @@ public class SplashActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		Toast.makeText(getApplicationContext(), "on start", Toast.LENGTH_SHORT)
-				.show();
 		Animation animation = AnimationUtils.loadAnimation(getBaseContext(),
 				R.anim.play_animation);
 		playButton.setAnimation(animation);

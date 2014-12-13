@@ -2,24 +2,30 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="top"
-    android:stretchColumns="*"
-    android:shrinkColumns="*" >
-    
+    android:layout_gravity="center"
+    android:shrinkColumns="*"
+    android:stretchColumns="1" >
+
     <TableRow>
+
         <TextView
             android:id="@+id/txtScoreDate"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_marginTop="6pt"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_shape"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-              
         <TextView
             android:id="@+id/txtScoreTotalAttempts"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_marginTop="6pt"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle_shape"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </TableRow>
 
