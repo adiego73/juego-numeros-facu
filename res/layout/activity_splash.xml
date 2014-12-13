@@ -5,15 +5,12 @@
     android:background="@drawable/background"
     tools:context="${relativePackage}.${activityClass}" >
 
-    <ImageView
-        android:id="@+id/btn_play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+    <include
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="110dp"
-        android:contentDescription="Play"
-        android:src="@drawable/splash_play" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/play_button_layout" />
 
     <TextView
         android:id="@+id/txt_appName"
@@ -23,6 +20,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="116dp"
         android:text="@string/app_name"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textColor="#000000"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="50sp" />
 
 </RelativeLayout>
