@@ -18,7 +18,6 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/rectangle_shape"
             android:gravity="center"
             android:text="@string/header_scores_date"
             android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -28,7 +27,6 @@
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/rectangle_shape"
             android:gravity="center"
             android:text="@string/header_scores_attempts"
             android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -37,8 +35,7 @@
     <ListView
         android:id="@+id/listScores"
         android:layout_height="fill_parent"
-        android:layout_marginTop="6pt"
-        android:background="@drawable/rectangle_shape" >
+        android:layout_marginTop="6pt" >
     </ListView>
 
 </TableLayout>
