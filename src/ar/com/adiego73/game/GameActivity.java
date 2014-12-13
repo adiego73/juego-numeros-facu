@@ -42,8 +42,6 @@ public class GameActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 
-		AssetsHelper.build(getAssets());
-
 		this.attempts = new ArrayList<Attempt>();
 		this.numbersEditText = new ArrayList<EditText>();
 		this.numbersEditText.add((EditText) findViewById(R.id.primerNumero));
@@ -64,8 +62,9 @@ public class GameActivity extends ActionBarActivity {
 		((TextView) findViewById(R.id.txtAttemptHeaderHelp)).setTypeface(AssetsHelper.getCodeFontTypeFace());
 		((TextView) findViewById(R.id.txtAttemptHeaderNumber)).setTypeface(AssetsHelper.getCodeFontTypeFace());
 		
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		getWindow().clearFlags(
+				WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 	}
 	
 	@Override

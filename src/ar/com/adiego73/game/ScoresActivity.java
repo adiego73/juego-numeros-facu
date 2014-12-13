@@ -27,12 +27,15 @@ public class ScoresActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_scores);
 		listScores = (ListView) findViewById(R.id.listScores);
-		
-		((TextView) findViewById(R.id.txtScoreDate)).setTypeface(AssetsHelper.getCodeFontTypeFace());
-		((TextView) findViewById(R.id.txtScoreTotalAttempts)).setTypeface(AssetsHelper.getCodeFontTypeFace());
-		
+
+		((TextView) findViewById(R.id.txtScoreDate)).setTypeface(AssetsHelper
+				.getCodeFontTypeFace());
+		((TextView) findViewById(R.id.txtScoreTotalAttempts))
+				.setTypeface(AssetsHelper.getCodeFontTypeFace());
+
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+		getWindow().clearFlags(
+				WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 	}
 
 	@Override
