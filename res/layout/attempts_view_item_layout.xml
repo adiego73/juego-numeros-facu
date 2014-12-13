@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:shrinkColumns="*"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:shrinkColumns="*" 
     android:stretchColumns="1" >
 
     <TableRow>
 
         <TextView
-            android:id="@+id/txtAttemptId"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:id="@+id/txtAttemptId" 
+            android:layout_width="0dip" 
+            android:layout_height="wrap_content" 
+            android:layout_marginBottom="3dp" 
+            android:layout_weight="1" 
+            android:gravity="center" 
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:id="@+id/txtAttemptHelp"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:id="@+id/txtAttemptHelp" 
+            android:layout_width="0dip" 
+            android:layout_height="wrap_content" 
+            android:layout_marginBottom="3dp" 
+            android:layout_weight="1" 
+            android:gravity="center" 
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
-            android:id="@+id/txtAttemptNumber"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="3dp"
-            android:layout_weight="1"
-            android:gravity="center"
+            android:id="@+id/txtAttemptNumber" 
+            android:layout_width="0dip" 
+            android:layout_height="wrap_content" 
+            android:layout_marginBottom="3dp" 
+            android:layout_weight="1" 
+            android:gravity="center" 
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </TableRow>
 

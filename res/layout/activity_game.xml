@@ -11,32 +11,15 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="26dp"
+        android:gravity="center"
         android:text="@string/ingrese_numero"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <include
-        android:id="@+id/btnProbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/numbersContainer"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="21dp"
-        layout="@layout/go_button_layout" />
-
-    <include
-        android:id="@+id/btnReiniciar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnProbar"
-        android:layout_alignBottom="@+id/btnProbar"
-        android:layout_alignRight="@+id/numbersContainer"
-        layout="@layout/reset_button_layout" />
 
     <LinearLayout
         android:id="@+id/numbersContainer"
@@ -107,52 +90,69 @@
     </LinearLayout>
 
     <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnProbar"
-        android:layout_alignLeft="@+id/btnProbar"
-        android:layout_alignRight="@+id/btnReiniciar"
-        android:layout_below="@+id/numbersContainer"
-        android:layout_marginTop="6pt"
-        android:gravity="center_horizontal"
-        android:shrinkColumns="*"
+        android:id="@+id/tableLayout1" 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_above="@+id/btnProbar" 
+        android:layout_alignLeft="@+id/numbersContainer" 
+        android:layout_alignRight="@+id/btnProbar" 
+        android:layout_below="@+id/numbersContainer" 
+        android:layout_marginTop="6pt" 
+        android:gravity="center_horizontal" 
+        android:shrinkColumns="*" 
         android:stretchColumns="1" >
 
         <TableRow>
 
             <TextView
-                android:id="@+id/txtAttemptHeaderId"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/header_attempts_id"
+                android:id="@+id/txtAttemptHeaderId" 
+                android:layout_width="0dip" 
+                android:layout_height="wrap_content" 
+                android:layout_weight="1" 
+                android:gravity="center" 
+                android:text="@string/header_attempts_id" 
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
-                android:id="@+id/txtAttemptHeaderHelp"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/header_attempts_help"
+                android:id="@+id/txtAttemptHeaderHelp" 
+                android:layout_width="0dip" 
+                android:layout_height="wrap_content" 
+                android:layout_weight="1" 
+                android:gravity="center" 
+                android:text="@string/header_attempts_help" 
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
-                android:id="@+id/txtAttemptHeaderNumber"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/header_attempts_number"
+                android:id="@+id/txtAttemptHeaderNumber" 
+                android:layout_width="0dip" 
+                android:layout_height="wrap_content" 
+                android:layout_weight="1" 
+                android:gravity="center" 
+                android:text="@string/header_attempts_number" 
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
 
         <ListView
-            android:id="@+id/listAttempts"
-            android:layout_height="fill_parent"
+            android:id="@+id/listAttempts" 
+            android:layout_height="match_parent" 
             android:layout_marginTop="2dp" >
         </ListView>
     </TableLayout>
+
+    <include
+        android:id="@+id/btnProbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/numbersContainer"
+        layout="@layout/go_button_layout" />
+
+    <include
+        android:id="@+id/btnReiniciar" 
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+        android:layout_alignLeft="@+id/tableLayout1" 
+        android:layout_alignTop="@+id/btnProbar" 
+        layout="@layout/reset_button_layout" />
 
 </RelativeLayout>
