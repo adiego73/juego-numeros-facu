@@ -15,6 +15,11 @@
     <string name="header_scores_attempts">Intentos</string>
     <string name="title_activity_how_to">Cómo jugar</string>
     <string name="title_activity_splash">Adinumero</string>
-    <string name="hello_world">Hello world!</string>
+
+    <string name="how_to_play">Cómo jugar este juego:</string>
+    <string name="instruccion_1">El juego consiste en acertar el número que piensa la computadora. Debe poner un número de 4 dígitos en los casilleros celeste.</string>
+    <string name="instruccion_2">El número no empieza en cero, y no puede haber números repetidos. Por ejemplo, los números 0234, 1223, 2012 NO son válidos.</string>
+    <string name="instruccion_3">Una vez que haya completado todos los casilleros, debe presionar el botón que se encuentra abajo a la izquierda de la pantalla.</string>
+    <string name="instruccion_4">Se le mostrará la ayuda correspondiente de la siguiente manera: XB en caso de que alguno de los números ingresados se encuentre en su posición final, XR en caso de que alguno de los números correspondan al número a adivinar, pero no se encuentre en su posición final; siendo X la cantidad de números que cumplen estas condiciones.</string>
 
 </resources>

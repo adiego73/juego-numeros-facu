@@ -153,7 +153,7 @@ public class GameActivity extends ActionBarActivity {
 			emptyListView();
 		}
 		numbersEditText.get(0).requestFocus();
-		keyboard.showSoftInput(numbersEditText.get(0), InputMethodManager.SHOW_FORCED);
+		keyboard.showSoftInput(numbersEditText.get(0), InputMethodManager.SHOW_IMPLICIT);
 	}
 
 	public void click_reiniciar(View v) {
@@ -165,7 +165,7 @@ public class GameActivity extends ActionBarActivity {
 		game.init();
 		this.resetNumbers();
 		numbersEditText.get(0).requestFocus();
-		keyboard.showSoftInput(numbersEditText.get(0), InputMethodManager.SHOW_FORCED);
+		keyboard.showSoftInput(numbersEditText.get(0), InputMethodManager.SHOW_IMPLICIT);
 		emptyListView();
 	}
 
@@ -180,11 +180,13 @@ public class GameActivity extends ActionBarActivity {
 
 	private void goToScoresActivity() {
 		Intent intent = new Intent(this, ScoresActivity.class);
+		keyboard.hideSoftInputFromWindow(numbersEditText.get(0).getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 		startActivity(intent);
 	}
 
 	private void goToHowtoActivity() {
 		Intent intent = new Intent(this, HowToActivity.class);
+		keyboard.hideSoftInputFromWindow(numbersEditText.get(0).getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 		startActivity(intent);
 	}
 

@@ -35,6 +35,7 @@
             android:id="@+id/primerNumero"
             android:layout_width="0dp"
             android:layout_height="25dp"
+            android:layout_marginRight="3dp"
             android:layout_weight="1"
             android:background="@drawable/rectangle_shape"
             android:digits="1234567890"
@@ -49,6 +50,7 @@
             android:id="@+id/segundoNumero"
             android:layout_width="0dp"
             android:layout_height="25dp"
+            android:layout_marginRight="3dp"
             android:layout_weight="1"
             android:background="@drawable/rectangle_shape"
             android:digits="1234567890"
@@ -64,6 +66,7 @@
             android:id="@+id/tercerNumero"
             android:layout_width="0dp"
             android:layout_height="25dp"
+            android:layout_marginRight="3dp"
             android:layout_weight="1"
             android:background="@drawable/rectangle_shape"
             android:digits="1234567890"
@@ -90,51 +93,51 @@
     </LinearLayout>
 
     <TableLayout
-        android:id="@+id/tableLayout1" 
-        android:layout_width="fill_parent" 
-        android:layout_height="wrap_content" 
-        android:layout_above="@+id/btnProbar" 
-        android:layout_alignLeft="@+id/numbersContainer" 
-        android:layout_alignRight="@+id/btnProbar" 
-        android:layout_below="@+id/numbersContainer" 
-        android:layout_marginTop="6pt" 
-        android:gravity="center_horizontal" 
-        android:shrinkColumns="*" 
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnProbar"
+        android:layout_alignLeft="@+id/numbersContainer"
+        android:layout_alignRight="@+id/btnProbar"
+        android:layout_below="@+id/numbersContainer"
+        android:layout_marginTop="6pt"
+        android:gravity="center_horizontal"
+        android:shrinkColumns="*"
         android:stretchColumns="1" >
 
         <TableRow>
 
             <TextView
-                android:id="@+id/txtAttemptHeaderId" 
-                android:layout_width="0dip" 
-                android:layout_height="wrap_content" 
-                android:layout_weight="1" 
-                android:gravity="center" 
-                android:text="@string/header_attempts_id" 
+                android:id="@+id/txtAttemptHeaderId"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/header_attempts_id"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
-                android:id="@+id/txtAttemptHeaderHelp" 
-                android:layout_width="0dip" 
-                android:layout_height="wrap_content" 
-                android:layout_weight="1" 
-                android:gravity="center" 
-                android:text="@string/header_attempts_help" 
+                android:id="@+id/txtAttemptHeaderHelp"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/header_attempts_help"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
-                android:id="@+id/txtAttemptHeaderNumber" 
-                android:layout_width="0dip" 
-                android:layout_height="wrap_content" 
-                android:layout_weight="1" 
-                android:gravity="center" 
-                android:text="@string/header_attempts_number" 
+                android:id="@+id/txtAttemptHeaderNumber"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/header_attempts_number"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
         </TableRow>
 
         <ListView
-            android:id="@+id/listAttempts" 
-            android:layout_height="match_parent" 
+            android:id="@+id/listAttempts"
+            android:layout_height="match_parent"
             android:layout_marginTop="2dp" >
         </ListView>
     </TableLayout>
@@ -148,11 +151,11 @@
         layout="@layout/go_button_layout" />
 
     <include
-        android:id="@+id/btnReiniciar" 
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-        android:layout_alignLeft="@+id/tableLayout1" 
-        android:layout_alignTop="@+id/btnProbar" 
+        android:id="@+id/btnReiniciar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tableLayout1"
+        android:layout_alignTop="@+id/btnProbar"
         layout="@layout/reset_button_layout" />
 
 </RelativeLayout>
