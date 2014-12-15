@@ -6,10 +6,11 @@
     tools:context="${relativePackage}.${activityClass}" >
 
     <include
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="110dp"
+        android:id="@+id/include1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="110dp"
         layout="@layout/play_button_layout" />
 
     <TextView
@@ -20,8 +21,20 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="116dp"
         android:text="@string/app_name"
-        android:textColor="#000000"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#000000"
         android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="14dp"
+        android:layout_marginRight="14dp"
+        android:text="@string/author"
+        android:textColor="#000000"
+        android:textSize="12sp" />
 
 </RelativeLayout>

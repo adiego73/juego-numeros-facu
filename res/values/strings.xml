@@ -22,4 +22,6 @@
     <string name="instruccion_3">Una vez que haya completado todos los casilleros, debe presionar el botón que se encuentra abajo a la izquierda de la pantalla.</string>
     <string name="instruccion_4">Se le mostrará la ayuda correspondiente de la siguiente manera: XB en caso de que alguno de los números ingresados se encuentre en su posición final, XR en caso de que alguno de los números correspondan al número a adivinar, pero no se encuentre en su posición final; siendo X la cantidad de números que cumplen estas condiciones.</string>
 
+    <string name="author">Diego Emanuel Avila - 39011460</string>
+    
 </resources>
